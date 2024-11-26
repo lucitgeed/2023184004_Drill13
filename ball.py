@@ -12,8 +12,8 @@ class Ball:
     def __init__(self, x=None, y=None):
         if Ball.image == None:
             Ball.image = load_image('ball21x21.png')
-        self.x = x if x else random.randint(50, 1807)
-        self.y = y if y else random.randint(50, 1100)
+        self.x = x if x else random.randint(50, 1707)
+        self.y = y if y else random.randint(50, 1000)
 
     def draw(self):
         sx = self.x - server.background.window_left
@@ -33,4 +33,6 @@ class Ball:
         return sx - 10, sy - 10, sx + 10, sy + 10
 
     def handle_collision(self, group, other):
+        if group == 'boy:ball':
+            game_world.remove_object(self)
         pass

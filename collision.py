@@ -1,3 +1,4 @@
+from game_world import collision_pairs
 
 
 def collide(a, b):

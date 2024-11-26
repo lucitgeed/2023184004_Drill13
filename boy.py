@@ -231,9 +231,9 @@ class Boy:
 
 
 
-
     def handle_event(self, event):
         self.state_machine.handle_event(('INPUT', event))
+
 
 
     def draw(self):
@@ -243,22 +243,31 @@ class Boy:
         #소년의 위치를 중앙ㅇ으로 제한
 
         #이제 제한없이 좌표변환
-        sx= self.x - server.background.window_left
-        sy = self.y - server.background.window_bottom
+#        sx= self.x - server.background.window_left
+#        sy = self.y - server.background.window_bottom
         #x,y는 원래 배경월드의 좌표계였는데, 이렇게 sx,sy인 화면(윈도우창) 좌표로 변환함
 
 #        sx,sy = get_canvas_width() // 2, get_canvas_height() // 2
 
+        sx = self.x
+        sy = self.y
+
         self.image.clip_draw(int(self.frame) * 100, self.action * 100, 100, 100, sx, sy)
-        self.font.draw(int(sx - 100), int(sy + 60), f'({self.x:5.5}, {self.y:5.5})', (255, 255, 0))
+#        self.font.draw(int(sx - 100), int(sy + 60), f'({self.x:5.5}, {self.y:5.5})', (255, 255, 0))
 
-
+        draw_rectangle(*self.get_bb())
 
 
     def get_bb(self):
-        return self.x - 20, self.y - 50, self.x + 20, self.y + 50
+
+        sx= self.x
+        sy = self.y
+
+        return sx - 20, sy - 50, sx + 20, sy + 50
 
     def handle_collision(self, group, other):
+        if group == 'boy:ball':
+            pass
         pass
 
 
