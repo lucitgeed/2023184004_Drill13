@@ -221,12 +221,12 @@ class Boy:
 
 
         #백그라운드배경/월드 기준으로 x,y의 의치를 제한해야함
-#        self.x = clamp(0,
-#                       self.x,
-#                       server.background.cw -25.0)
-#        self.y = clamp(25.0,
-#                       self.y,
-#                       server.background.ch -25.0)
+        self.x = clamp(0,
+                       self.x,
+                       server.background.cw -15.0)
+        self.y = clamp(15.0,
+                       self.y,
+                       server.background.ch -15.0)
         ###무한 스크롤링을 위해서는 위의 범위를 제한 하는 것이 아님
 
 
@@ -243,11 +243,11 @@ class Boy:
         #소년의 위치를 중앙ㅇ으로 제한
 
         #이제 제한없이 좌표변환
-#        sx= self.x - server.background.window_left
-#        sy = self.y - server.background.window_bottom
+        sx= self.x - server.background.window_left
+        sy = self.y - server.background.window_bottom
         #x,y는 원래 배경월드의 좌표계였는데, 이렇게 sx,sy인 화면(윈도우창) 좌표로 변환함
 
-        sx,sy = get_canvas_width() // 2, get_canvas_height() // 2
+#        sx,sy = get_canvas_width() // 2, get_canvas_height() // 2
 
         self.image.clip_draw(int(self.frame) * 100, self.action * 100, 100, 100, sx, sy)
         self.font.draw(int(sx - 100), int(sy + 60), f'({self.x:5.5}, {self.y:5.5})', (255, 255, 0))

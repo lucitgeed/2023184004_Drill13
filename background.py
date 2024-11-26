@@ -13,6 +13,10 @@ class FixedBackground:
         self.cw = get_canvas_width()
         self.ch = get_canvas_height()
         # fill here
+
+        self.window_left = 0
+        self.window_bottom = 0
+
         pass
 
     def draw(self):
@@ -40,6 +44,8 @@ class FixedBackground:
 
     def handle_event(self, event):
         pass
+
+
 
 class NewFixedBackground:
 
